@@ -1,1 +1,1 @@
-# Gate cancello automatico battente in fase di sviluppo
+# Gate: cancello automatico battente, in fase di sviluppo.
