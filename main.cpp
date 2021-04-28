@@ -47,8 +47,8 @@ int tempoPausa = 0;
 int stato = 0;
 int tempoApertura = 0;
 int tempoAperto = 0;
-boolean timeOutAp = 0;
-boolean timeOutCh = 0;
+boolean timeOutAp = false;
+boolean timeOutCh = false;
 
 void setup() {
   // put your setup code here, to run once:
@@ -70,14 +70,14 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+    // put your main code here, to run repeatedly:
   tempoApertura = analogRead(AD0);
   tempoPausa = analogRead(AD1);
 
   if (digitalRead(PA)==0 || stato==1) //Pressione PA o programma in stato 1 routine apertura
   {
     stato=1;
-    if (digitalRead(FA)==0 && timeOutAp==0)
+    if (digitalRead(FA)==0 && timeOutAp==false)
     {
       digitalWrite(R1, 1);
       delay(1000);
@@ -95,7 +95,7 @@ void loop() {
 
   if (stato == 2) //Routine chiusura
   {
-    if (digitalRead(FA)==0 && digitalRead(FC)==0 && timeOutCh==0)
+    if (digitalRead(FA)==0 && digitalRead(FC)==0 && timeOutCh==false)
     {
       digitalWrite(R3, 1);
       delay(2000);
@@ -116,40 +116,36 @@ void loop() {
   }
 
   
-if (stato = 1) //In apertura temporizzazione
-{
-  delay(1000);
-  conteggioAp=conteggioAp+1;
-  if (conteggioAp==tempoApertura)
-  {
-    timeOutAp = 1;
-    conteggioAp = 0;
+ if (stato = 1) //In apertura temporizzazione
+ {
+   delay(1000);
+   conteggioAp=conteggioAp+1;
+   if (conteggioAp==tempoApertura)
+   {
+     timeOutAp = true;
+     conteggioAp = 0;
+   }
   }
 
-if (stato = 2) //In chiusura temporizzazione
-{
-  delay(1000);
-  conteggioCh=conteggioCh+1;
-  if (conteggioCh==tempoApertura)
-  {
-    timeOutCh = 1;
-    conteggioCh = 0;
+ if (stato = 2) //In chiusura temporizzazione
+ {
+   delay(1000);
+   conteggioCh=conteggioCh+1;
+   if (conteggioCh==tempoApertura)
+   {
+     timeOutCh = true;
+     conteggioCh = 0;
+   }
+ }
+ if (stato = 3) //Aperto temporizzazione
+ {
+   delay(1000);
+   tempoAperto=tempoAperto+1;
+   if (tempoAperto==tempoPausa)
+   {
+     stato=2;
+     tempoAperto=0;
+   }
   }
 
-if (stato = 3) //Aperto temporizzazione
-{
-  delay(1000);
-  tempoAperto=tempoAperto+1;
-  if (tempoAperto==tempoPausa)
-  {
-    stato=2;
-    tempoAperto=0;
-  }
-  
-
-}
-
-  
-}
-  
 }

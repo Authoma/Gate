@@ -1,0 +1,6 @@
+_predisporre uscita lamp indipendente
+_predisporre flash allrmi su lampeggiatore
+_gestire led debug con lampeggi relativi agli allarmi
+_predisporre ripristino allarme
+_predisporre seriale per debug
+_predisporre pin sicurezza antimovimento per manutenzione
