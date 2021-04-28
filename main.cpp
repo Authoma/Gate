@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
 /* AUTOMAZIONE CANCELLO BATTENTE
-Editor Schirò Roberto 28/03/2021
+Editor Caotiko 28/03/2021
 Automazione per il controllo di un cancello a battente mediante da autocostruita basata su arduino stand alone con chip Atmega 328P
 Ingressi presenti:
 PA pulsante apertura
