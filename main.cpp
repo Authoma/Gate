@@ -3,6 +3,7 @@
 /* AUTOMAZIONE CANCELLO BATTENTE
 Editor Caotiko 28/03/2021
 Automazione per il controllo di un cancello a battente mediante da autocostruita basata su arduino stand alone con chip Atmega 328P
+Progetto editato con PlatformIo
 Ingressi presenti:
 PA pulsante apertura
 PS pulsante di stop
@@ -16,6 +17,8 @@ R1 motore destro
 R2 motore sinistro
 R3 relè inversione motori
 */
+
+// Inizio programma
 
 #define PA 4 //Pin pb4 arduino pulsante apertura
 #define PS 10 //Pin pd2 arduino pulsante stop
